@@ -19,13 +19,13 @@ public interface MovieDao {
     @Query("SELECT * FROM movie WHERE id = :id")
     Movie getMovie(String id);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(Movie... Movies);
+    void insert(Movie... movies);
 
     @Update
-    void update(Movie... Movies);
+    void update(Movie... movies);
 
     @Delete
-    void delete(Movie... Movies);
+    void delete(Movie...movies);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertMovies(Movie... Movies);

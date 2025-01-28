@@ -73,13 +73,13 @@ public interface WebServiceApi {
 
     //get all categories
     @GET("api/categories")
-    Call<List<Movie>> getAllCategories(@Header("Authorization") String token);
-    //create all categories
+    Call<List<Category>> getAllCategories(@Header("Authorization") String token);
+    //create categories
     @POST("api/categories")
     Call<JsonObject> createCategory(@Header("Authorization") String token,@Body JsonObject category);
     //get categoryById
     @GET("api/categories/{id}")
-    Call<List<Movie>> getCategoryById(@Header("Authorization") String token,@Path("id") String id);
+    Call<Category> getCategoryById(@Header("Authorization") String token,@Path("id") String id);
     //update categoryById
     @PATCH("api/categories/{id}")
     Call<JsonObject> updateCategoryById(@Header("Authorization") String token,@Path("id") String id,@Body JsonObject category);

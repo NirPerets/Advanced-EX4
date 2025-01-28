@@ -7,8 +7,8 @@ const createCategory = async (req, res) => {
     if(!req.body.name){
         return res.status(400).json({ errors: ['Name is required'] });
     }
-    await categoryService.createCategory(req.body.name,req.body.promoted);
-    res.status(201).json();
+    const category = await categoryService.createCategory(req.body.name,req.body.promoted);
+    res.status(201).json(category);
   }
   catch(err){
     res.status(400).json({ errors: ['Bad Request'], details: err.message });

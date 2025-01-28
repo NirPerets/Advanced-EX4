@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -14,12 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.adapters.MoviesListAdapter;
 import com.example.myapplication.databinding.ActivityMovieInfoBinding;
+import com.example.myapplication.viewModel.MovieViewModel;
 
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MovieInfoActivity extends AppCompatActivity {
     private ActivityMovieInfoBinding binding;
+    private List<Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +40,19 @@ public class MovieInfoActivity extends AppCompatActivity {
             Intent intent = new Intent(this, FullScreenMovieActivity.class);
             startActivity(intent);
         });
-        final MoviesListAdapter adapter = new MoviesListAdapter(this);
         RecyclerView lstMovies=binding.lstRecommendedMovies;
+        final MoviesListAdapter adapter = new MoviesListAdapter(this);
+        MovieViewModel movieViewModel = new MovieViewModel(this);
+        movieViewModel.getMoviesByCategory(MovieInfoActivity.this).observe(MovieInfoActivity.this, movies -> {
+            if (movies != null) {
+                this.movies = new ArrayList<Movie>();
+                adapter.setMovies(movies);
+            } else {
+                Log.e("HomeActivity", "onResume: Failed to fetch videos");
+            }
+        });
+
+
         lstMovies.setAdapter(adapter);
         lstMovies.setLayoutManager(new GridLayoutManager(this,3));
 

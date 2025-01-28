@@ -26,10 +26,7 @@ public class MoviesApi {
     WebServiceApi webServiceApi;
 
     public MoviesApi() {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(MyApplication.context.getString(R.string.baseUrl))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        retrofit = RetrofitClient.getInstance();
         webServiceApi = retrofit.create(WebServiceApi.class);
 
     }

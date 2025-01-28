@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.myapplication.MovieInfoActivity;
+
 import com.example.myapplication.R;
 import com.example.myapplication.entities.Movie;
 
@@ -45,7 +45,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Mo
     public void onBindViewHolder(MovieViewHolder holder, int position) {
         if (movies != null) {
             final Movie current = movies.get(position);
-            holder.ivPic.setImageResource(current.getImage());
+            //holder.ivPic.setImageResource(current.getImagePath());
         }
 
     }

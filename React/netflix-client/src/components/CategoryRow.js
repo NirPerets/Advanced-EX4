@@ -2,10 +2,6 @@ import { useEffect } from 'react'
 import MovieCard from './MovieCard'
 
 export default function CategoryRow({ category, movies }) {
-    useEffect(() => {
-        console.log(category)
-    })
-
     if (movies.length === 0)
         return(<></>)
 

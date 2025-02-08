@@ -16,6 +16,8 @@ router.route('/:id/recommend')
   .get(auth.verifyToken, movieController.getRecommendedMovies)
   .post(auth.verifyToken, movieController.addToRecommendedMovies);
 
+router.get('/player/:id', auth.verifyToken, movieController.sendMovie)
+
 router.get('/all/movies', auth.verifyToken, movieController.allMovies)
 
 router.get('/search/:query', auth.verifyToken, movieController.searchMovies);
